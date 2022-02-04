@@ -10,33 +10,37 @@
 </head>
 
 <body>
-    <form action="">
-        First Name: <input type="text" name="first-name" id="firstName" placeholder="Please Enter Your First Name">
-        Last Name: <input type="text" name="last-name" id="lastName" placeholder="Please Enter Your Last name">
-        Study Program: 
-        <select>
+    <form>
+        First Name: <input type="text" name="first-name" placeholder="Please Enter Your First Name" class="first-name" oninput="updateValue()">
+        Last Name: <input type="text" name="last-name" placeholder="Please Enter Your Last name" class="last-name" oninput="updateValue()">
+        Study Program:
+        <select class="study-program" oninput="updateValue()">
             <option value="BSSE">Bs Software Enineering</option>
             <option value="BSCS">Bs Computer Science</option>
             <option value="MCS">Master of Computer science</option>
             <option value="MIT">Master of Information Technology</option>
         </select>
 
-        Semester: 
-        <select>
+        Semester:
+        <select class="semester" oninput="updateValue()">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
         </select>
 
-        Year: 
-        <select>
+        Year:
+        <select class="year" oninput="updateValue()">
             <option value="Spring2018">Spring2018</option>
             <option value="Fall2018">Fall2018</option>
             <option value="Spring2019">Spring2019</option>
             <option value="Fall2019">Fall2019</option>
         </select>
-        <input type="text" placeholder="Student Id" readonly>
+        <input type="text" placeholder="Student Id" class="student-id" readonly>
+
+        <textarea id="about" name="about" rows="4" cols="100" class="about" oninput="updateValue()"></textarea>
+        <button type="button" class="save">Save</button>
+        <input type="reset" value="Reset">
     </form>
 
     <script src="./script.js"></script>
