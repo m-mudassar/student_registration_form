@@ -14,7 +14,7 @@
         First Name: <input type="text" name="first-name" placeholder="Please Enter Your First Name" class="first-name" oninput="updateValue()">
         Last Name: <input type="text" name="last-name" placeholder="Please Enter Your Last name" class="last-name" oninput="updateValue()">
         Study Program:
-        <select class="study-program" oninput="updateValue()">
+        <select class="study-program" oninput="updateValue()" onclick="updateValue()">
             <option value="BSSE">Bs Software Enineering</option>
             <option value="BSCS">Bs Computer Science</option>
             <option value="MCS">Master of Computer science</option>
@@ -31,10 +31,10 @@
 
         Year:
         <select class="year" oninput="updateValue()">
-            <option value="Spring2018">Spring2018</option>
-            <option value="Fall2018">Fall2018</option>
-            <option value="Spring2019">Spring2019</option>
-            <option value="Fall2019">Fall2019</option>
+            <option value="spring2018">Spring2018</option>
+            <option value="fall2018">Fall2018</option>
+            <option value="spring2019">Spring2019</option>
+            <option value="fall2019">Fall2019</option>
         </select>
         <input type="text" placeholder="Student Id" class="student-id" readonly>
 
