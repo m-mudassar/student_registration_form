@@ -17,15 +17,29 @@ var studyProgram = " "
 var semester = " "
 var year = " "
 var about = " "
-var rollNumber = 00000
-// var studenID = " "
+var rollNumber = 00001
+var studenID = " "
 
-function generateStudentID(studyProgram, year, rollNumber){
-    var studenID = " "
+function updateValue() {
+    firstName = document.querySelector(".first-name").value
+    lastName = document.querySelector(".last-name").value
+    studyProgram = document.querySelector(".study-program").value
+    semester = document.querySelector(".semester").value
+    year = document.querySelector(".year").value
+    about = document.querySelector(".about").value
+    
+    
+    console.log("First Name: " + firstName +
+     " Last Name: " + lastName +
+     " Study Program: " + studyProgram +
+     " Semester: " + semester +
+     " Year " + year +
+     " About " + about)
+
     var firstTwoLettersOfStudyProgram = studyProgram.substring(0 , 2)
-    var lastTwoDigitsOfYear = year.substr(year.length - 2)
-   console.log(firstTwoLettersOfStudyProgram)
-    studenID = firstTwoLettersOfStudyProgram.concat(lastTwoDigitsOfYear)
+    var lastTwoDigitsOfYear = year.substring(year.length - 2)
+   // studenID = studenID + firstTwoLettersOfStudyProgram + lastTwoDigitsOfYear
+    
     // if the semester is spring 
     // we will simply append 02
     // else we will append 04
@@ -37,27 +51,10 @@ function generateStudentID(studyProgram, year, rollNumber){
         isSpring = "04"
     }
 
+    studenID = firstTwoLettersOfStudyProgram + lastTwoDigitsOfYear + isSpring + rollNumber
     rollNumber++
-    console.log(studentID)
-
-    return studenID
-}
-
-function updateValue() {
-    firstName = document.querySelector(".first-name").value
-    lastName = document.querySelector(".last-name").value
-    studyProgram = document.querySelector(".study-program").value
-    semester = document.querySelector(".semester").value
-    year = document.querySelector(".year").value
-    about = document.querySelector(".about").value
-    studentID = document.querySelector(".student-id").value
-    // console.log("First Name: " + firstName +
-    //  " Last Name: " + lastName +
-    //  " Study Program: " + studyProgram +
-    //  " Semester: " + semester +
-    //  " Year " + year +
-    //  " About " + about)
-    generateStudentID(studyProgram, year, rollNumber)
+    
+    studentID = document.querySelector(".student-id").setAttribute("value", studenID)    
 }
 
 
