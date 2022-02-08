@@ -11,14 +11,18 @@ class Student{
     }
 }
 
+
+
+var students = []
 var firstName = " "
 var lastName = " "
 var studyProgram = " "
 var semester = " "
 var year = " "
 var about = " "
-var rollNumber = 00001
-var studenID = " "
+var rollNumber = "1"
+var studentID = " "
+
 
 function updateValue() {
     firstName = document.querySelector(".first-name").value
@@ -27,22 +31,10 @@ function updateValue() {
     semester = document.querySelector(".semester").value
     year = document.querySelector(".year").value
     about = document.querySelector(".about").value
-    
-    
-    console.log("First Name: " + firstName +
-     " Last Name: " + lastName +
-     " Study Program: " + studyProgram +
-     " Semester: " + semester +
-     " Year " + year +
-     " About " + about)
 
     var firstTwoLettersOfStudyProgram = studyProgram.substring(0 , 2)
     var lastTwoDigitsOfYear = year.substring(year.length - 2)
-   // studenID = studenID + firstTwoLettersOfStudyProgram + lastTwoDigitsOfYear
     
-    // if the semester is spring 
-    // we will simply append 02
-    // else we will append 04
     var isSpring = "02"
     if(year.includes("spring")){
         isSpring = "02"
@@ -51,11 +43,28 @@ function updateValue() {
         isSpring = "04"
     }
 
-    studenID = firstTwoLettersOfStudyProgram + lastTwoDigitsOfYear + isSpring + rollNumber
-    rollNumber++
-    
-    studentID = document.querySelector(".student-id").setAttribute("value", studenID)    
+    studentID = firstTwoLettersOfStudyProgram + lastTwoDigitsOfYear + isSpring + (rollNumber).toString().padStart(5, "0")
+    document.querySelector(".student-id").setAttribute("value", studentID)    
 }
+
+function saveData(){
+    var newStudent = new Student(firstName, lastName, studyProgram, semester, year, about)
+    newStudent.studentID = studentID
+    students.push(newStudent)
+    rollNumber++
+    document.querySelector(".student-id").removeAttribute("value")
+    displayData()
+}
+
+function displayData(){
+    for (let i = 0; i < students.length; i++) {
+       document.querySelector(".content").innerText = students[i].firstName
+       console.log(students[i])        
+    }
+}
+
+
+
 
 
 

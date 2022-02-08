@@ -36,12 +36,18 @@
             <option value="spring2019">Spring2019</option>
             <option value="fall2019">Fall2019</option>
         </select>
+
+        Student ID: 
         <input type="text" placeholder="Student Id" class="student-id" readonly>
 
         <textarea id="about" name="about" rows="4" cols="100" class="about" oninput="updateValue()"></textarea>
-        <button type="button" class="save">Save</button>
+        <button type="button" class="save" onclick="saveData()">Save</button>
         <input type="reset" value="Reset">
     </form>
+
+    <p class="content">
+
+    </p>
 
     <script src="./script.js"></script>
 
