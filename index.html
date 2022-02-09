@@ -1,56 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
     <title>Student Registration Form</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <form>
-        First Name: <input type="text" name="first-name" placeholder="Please Enter Your First Name" class="first-name" oninput="updateValue()">
-        Last Name: <input type="text" name="last-name" placeholder="Please Enter Your Last name" class="last-name" oninput="updateValue()">
-        Study Program:
-        <select class="study-program" onclick="updateValue()">
-            <option value="BSSE">Bs Software Enineering</option>
-            <option value="BSCS">Bs Computer Science</option>
-            <option value="MCS">Master of Computer science</option>
-            <option value="MIT">Master of Information Technology</option>
-        </select>
+      First Name:
+      <input
+        type="text"
+        name="first-name"
+        placeholder="First Name"
+        class="first-name"
+        oninput="updateValue()"
+      />
+      Last Name:
+      <input
+        type="text"
+        name="last-name"
+        placeholder="Last name"
+        class="last-name"
+        oninput="updateValue()"
+      />
+      Study Program:
+      <select class="study-program" onclick="updateValue()">
+        <option value="BSSE">Bs Software Enineering</option>
+        <option value="BSCS">Bs Computer Science</option>
+        <option value="MCS">Master of Computer science</option>
+        <option value="MIT">Master of Information Technology</option>
+      </select>
 
-        Semester:
-        <select class="semester" oninput="updateValue()">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-        </select>
+      Semester:
+      <select class="semester" oninput="updateValue()">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+      </select>
 
-        Year:
-        <select class="year" oninput="updateValue()">
-            <option value="spring2018">Spring2018</option>
-            <option value="fall2018">Fall2018</option>
-            <option value="spring2019">Spring2019</option>
-            <option value="fall2019">Fall2019</option>
-        </select>
+      Year:
+      <select class="year" oninput="updateValue()">
+        <option value="spring2018">Spring2018</option>
+        <option value="fall2018">Fall2018</option>
+        <option value="spring2019">Spring2019</option>
+        <option value="fall2019">Fall2019</option>
+      </select>
 
-        Student ID: 
-        <input type="text" placeholder="Student Id" class="student-id" readonly>
+      Student ID:
+      <input type="text" placeholder="Student Id" class="student-id" readonly />
 
-        <textarea id="about" name="about" rows="4" cols="100" class="about" oninput="updateValue()"></textarea>
-        <button type="button" class="save" onclick="saveData()">Save</button>
-        <input type="reset" value="Reset">
+      <textarea
+        id="about"
+        name="about"
+        rows="4"
+        cols="100"
+        class="about"
+        oninput="updateValue()"
+      ></textarea>
+      <button type="button" class="save" onclick="saveData()">Save</button>
+      <input type="reset" value="Reset" />
     </form>
 
-    <div class="content">
-
-    </div>
+    <div class="content"></div>
 
     <script src="./script.js"></script>
-
-</body>
-
+  </body>
 </html>
