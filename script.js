@@ -57,10 +57,22 @@ function saveData(){
 }
 
 function displayData(){
+    document.querySelector(".content").innerHTML = ' '
     for (let i = 0; i < students.length; i++) {
-       document.querySelector(".content").innerText = students[i].firstName
+       document.querySelector(".content").innerHTML += ' <button type="button" onClick="editData(' + i + ')">Edit</button> ' +
+       '<button type="button" onClick="deleteData(' + i + ')">Delete</button>'
+       console.log(students[i].studentID)
        console.log(students[i])        
     }
+}
+
+function editData(i){
+    console.log("In edit data function" + i)
+}
+
+function deleteData(i){
+    students.splice(i, 1)
+    displayData()
 }
 
 
