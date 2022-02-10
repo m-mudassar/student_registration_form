@@ -55,18 +55,18 @@ function generateStudentID() {
   document.querySelector(".student-id").setAttribute("value", studentID);
 }
 
-function saveData() {
-  var isExist = false;
-  for (var i = 0; i < students.length; i++) {
-    if (tempStudentID == students[i].studentID) {
-      // students already exists
-      isExist = true;
-      console.log(isExist)
-      updateStudent(i);
-    }
+function isExist(id){
+  for(var i=0; i<students.length; i++){
+      if(students[i].studentID == id){
+        return true
+        console.log("Student Already Exists")
+      }
   }
+  return false
+}
 
-  if (isExist == false) {
+function saveData() {
+  if (!isExist(tempStudentID)) {
     var newStudent = new Student(
       firstName,
       lastName,
@@ -110,7 +110,7 @@ function editData(i) {
   semester = students[i].semester;
   year = students[i].year;
   about = students[i].about;
-  tempstudentID = students[i].studentID;
+  tempStudentID = students[i].studentID;
 
   document.querySelector(".first-name").value = firstName;
   document.querySelector(".last-name").value = lastName;
