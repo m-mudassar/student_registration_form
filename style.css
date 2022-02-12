@@ -1,0 +1,20 @@
+*{
+    color: #ffffff;
+}
+
+@font-face {
+    font-family: ;
+    src: url();
+}
+body{
+    background-image: url(./images/bg.jpg);
+    background-size: cover;
+}
+
+input, select, textarea, button{
+    background: transparent;
+}
+
+option{
+    color: black;
+}

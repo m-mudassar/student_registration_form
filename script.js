@@ -21,7 +21,7 @@ var about = " ";
 var rollNumber = "1";
 var studentID = " ";
 var tempStudentID = " ";
-
+var indexToUpdate = -1;
 function getValues (){
     firstName = document.querySelector(".first-name").value;
   lastName = document.querySelector(".last-name").value;
@@ -31,7 +31,7 @@ function getValues (){
   about = document.querySelector(".about").value;
 }
 function updateValue() {
-    getValues();
+   getValues();
    generateStudentID();
 }
 
@@ -58,8 +58,9 @@ function generateStudentID() {
 function isExist(id){
   for(var i=0; i<students.length; i++){
       if(students[i].studentID == id){
-        return true
+        indexToUpdate = i 
         console.log("Student Already Exists")
+        return true
       }
   }
   return false
@@ -75,9 +76,14 @@ function saveData() {
       year,
       about
     );
+    console.log("creating new student")
     newStudent.studentID = studentID;
     students.push(newStudent);
     rollNumber++;
+  } 
+
+  if(isExist(tempStudentID)){
+    updateStudent(indexToUpdate)
   }
 
   document.querySelector(".student-id").removeAttribute("value");
