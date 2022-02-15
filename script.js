@@ -22,8 +22,11 @@ var rollNumber = "1";
 var studentID = " ";
 var tempStudentID = " ";
 var indexToUpdate = -1;
+const save = document.querySelector(".save");
+const reset = document.querySelector(".reset");
+
 function getValues (){
-    firstName = document.querySelector(".first-name").value;
+  firstName = document.querySelector(".first-name").value;
   lastName = document.querySelector(".last-name").value;
   studyProgram = document.querySelector(".study-program").value;
   semester = document.querySelector(".semester").value;
@@ -33,6 +36,7 @@ function getValues (){
 function updateValue() {
    getValues();
    generateStudentID();
+   save.disabled = false;
 }
 
 function generateStudentID() {
@@ -80,6 +84,8 @@ function saveData() {
     newStudent.studentID = studentID;
     students.push(newStudent);
     rollNumber++;
+    save.disabled = true
+    reset.click();
   } 
 
   if(isExist(tempStudentID)){
