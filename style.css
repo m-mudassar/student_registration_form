@@ -28,13 +28,62 @@ option{
     font-size: 20px;
 }
 
-input[type=text], select, textarea, {
+.btn{
+    font-family: 'Roboto', sans-serif;
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: 500;
+    box-shadow: none;
+    outline: none;
+    border: 0;
+    color: #000;
+    border-radius: 3px;
+    background-color: #ffbd3f;
+    padding: 10px 36px;
+    margin-bottom: 10px;
+    width: 49%;
+}
+
+.content{
+    border: 1px solid gray;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.std-data{
+    width: 50%;
+    float: left;
+}
+
+.buttons{
+    width: 50%;
+    float: right;
+    text-align: right;    
+}
+
+.edit-btn{
+    display: block;
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.delete-btn{
+    display: block;
+    margin-left: auto;
+    margin-right: 0;
+}
+
+input[type=text], select, textarea {
     min-height: 50px;
     border: 1px solid #8385bf;
     padding: 10px 15px; 
     display: block;
-    width: 90%;
+    width: 98%;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
+    margin-top: 10px;
+    margin-bottom: 30px;
 }

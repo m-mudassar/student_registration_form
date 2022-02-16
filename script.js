@@ -33,7 +33,27 @@ function getValues (){
   year = document.querySelector(".year").value;
   about = document.querySelector(".about").value;
 }
+
+function validateStudent(){
+  getValues()
+  if (firstName == ''){
+    document.querySelector(".first-name").style.border = "1px solid red";
+    return false;
+  } else{
+    document.querySelector(".first-name").style.border = "1px solid gray";
+  }
+
+  if (lastName == ''){
+    document.querySelector(".last-name").style.border = "1px solid red";
+    return false;
+  } else{
+    document.querySelector(".last-name").style.border = "1px solid gray";
+  }
+  return true;
+}
+
 function updateValue() {
+   validateStudent();
    getValues();
    generateStudentID();
    save.disabled = false;
@@ -71,51 +91,55 @@ function isExist(id){
 }
 
 function saveData() {
-  if (!isExist(tempStudentID)) {
-    var newStudent = new Student(
-      firstName,
-      lastName,
-      studyProgram,
-      semester,
-      year,
-      about
-    );
-    console.log("creating new student")
-    newStudent.studentID = studentID;
-    students.push(newStudent);
-    rollNumber++;
-    save.disabled = true
-    reset.click();
-  } 
-
-  if(isExist(tempStudentID)){
-    updateStudent(indexToUpdate)
+  if(validateStudent()){
+    if (!isExist(tempStudentID)) {
+      var newStudent = new Student(
+        firstName,
+        lastName,
+        studyProgram,
+        semester,
+        year,
+        about
+      );
+      newStudent.studentID = studentID;
+      students.push(newStudent);
+      rollNumber++;
+      save.disabled = true
+      reset.click();
+    } 
+  
+    if(isExist(tempStudentID)){
+      updateStudent(indexToUpdate)
+    }
   }
-
+  
   document.querySelector(".student-id").removeAttribute("value");
   displayStudents();
 }
 
 function displayStudents() {
-  document.querySelector(".content").innerHTML = " ";
+  document.querySelector(".data").innerHTML = " ";
   for (let i = 0; i < students.length; i++) {
-    document.querySelector(".content").innerHTML +=
-      students[i].firstName +
-      students[i].lastName +
-      students[i].studyProgram +
-      '<button type="button" onClick="editData(' +
-      i +
-      ')">Edit</button>' +
-      '<button type="button" onClick="deleteData(' +
-      i +
-      ')">Delete</button>';
-    console.log(students[i].studentID);
-    console.log(students[i]);
+    document.querySelector(".data").innerHTML +=
+   ' <div class="content"> ' +
+   '   <div class="std-data"> ' +
+   '     <h3> Name:  <span> ' + students[i].firstName + ' ' + students[i].lastName + ' </span></h3> ' + 
+   '     <h3>Student ID: <span> ' + students[i].studentID + ' </span></h3> ' +
+   '     <h3>Study program: <span> ' + students[i].studyProgram + ' </span></h3> ' + 
+   '     <h3>Semester No: <span> ' + students[i].semester + ' </span></h3> ' +
+   '     <h3>Year: <span> ' + students[i].year + ' </span></h3> ' + 
+   '     <h3>About:</h3> ' +
+   '     <h3>' + students[i].about + '</h3> ' +
+   '   </div> ' +
+   '   <div class="buttons"> ' +
+   '   <button type="button" class="btn edit-btn" onclick="editData(' + i + ')">Edit</button> ' + 
+   '    <button type="button" class="btn delete-btn" onclick="deleteData(' + i + ')">Delete</button> ' + 
+   '   </div> ' +
+   ' </div> ';
   }
 }
 
 function editData(i) {
-  console.log("In edit data function" + i);
   firstName = students[i].firstName;
   lastName = students[i].lastName;
   studyProgram = students[i].studyProgram;

@@ -54,6 +54,7 @@
       Student ID:
       <input type="text" placeholder="Student Id" class="student-id" readonly />
 
+      About:
       <textarea
         id="about"
         name="about"
@@ -62,11 +63,13 @@
         class="about"
         oninput="updateValue()"
       ></textarea>
-      <button type="button" class="save" onclick="saveData()">Save</button>
-      <input type="reset" class="reset" value="Reset" />
+      <button type="button" class="save btn" onclick="saveData()">Save</button>
+      <input type="reset" class="reset btn" value="Reset" />
     </form>
 
-    <div class="content"></div>
+    <div class="data">
+      
+    </div>
 
     <script src="./script.js"></script>
   </body>
