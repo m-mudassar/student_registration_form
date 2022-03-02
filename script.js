@@ -79,6 +79,7 @@ function generateStudentID() {
   document.querySelector(".student-id").setAttribute("value", studentID);
 }
 
+// Returns true if the student already exists
 function isExist(id){
   for(var i=0; i<students.length; i++){
       if(students[i].studentID == id){
@@ -109,7 +110,8 @@ function saveData() {
     } 
   
     if(isExist(tempStudentID)){
-      updateStudent(indexToUpdate)
+      updateStudent(indexToUpdate);
+      reset.click();
     }
   }
   
@@ -117,6 +119,7 @@ function saveData() {
   displayStudents();
 }
 
+// Template for displaying the data for students
 function displayStudents() {
   document.querySelector(".data").innerHTML = " ";
   for (let i = 0; i < students.length; i++) {
@@ -139,7 +142,11 @@ function displayStudents() {
   }
 }
 
+
+// After getting the position i in array
 function editData(i) {
+
+  // Loading data into variables
   firstName = students[i].firstName;
   lastName = students[i].lastName;
   studyProgram = students[i].studyProgram;
@@ -148,6 +155,7 @@ function editData(i) {
   about = students[i].about;
   tempStudentID = students[i].studentID;
 
+  // Loading data into form
   document.querySelector(".first-name").value = firstName;
   document.querySelector(".last-name").value = lastName;
   document.querySelector(".study-program").value = studyProgram;
@@ -157,8 +165,13 @@ function editData(i) {
   document.querySelector(".student-id").value = tempStudentID;
 }
 
+// updating the record of a student
 function updateStudent(i) {
+
+  // 1. Getting values from form fields
     getValues();
+
+  // 2. Setting values at position i
     students[i].firstName = firstName;
     students[i].lastName = lastName;
     students[i].studyProgram = studyProgram;
@@ -166,9 +179,12 @@ function updateStudent(i) {
     students[i].year = year;
     students[i].about = about;
     students[i].studentID = tempStudentID;
+
+    // 3. Refreshing the students list for the updated list
     displayStudents();
 }
 
+// Delete students
 function deleteData(i) {
   students.splice(i, 1);
   displayStudents();
