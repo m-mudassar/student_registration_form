@@ -129,8 +129,12 @@ function saveData() {
       reset.click(); 
   }
   
+  // Resetting the student ID field
   document.querySelector(".student-id").removeAttribute("value");
   displayStudents();
+
+  // Scroll down to bottom to see new added recorded
+  window.scrollTo({ left: 0, top: document.body.scrollHeight, behavior: "smooth" });
 }
 
 // Displaying the list of all students
@@ -163,6 +167,9 @@ function displayStudents() {
 // After getting the position i in array
 function editData(i) {
 
+  // Scroll to Top for editing
+  window.scrollTo({top: 0, behavior: 'smooth'});
+  
   // Loading data into variables
   firstName = students[i].firstName;
   lastName = students[i].lastName;
@@ -217,6 +224,9 @@ function saveUpdatedData(){
       save.style.display = "inline";
       update.style.display = "none";
       reset.click();
+
+      // Scroll to Top after updating
+       window.scrollTo({top: 0, behavior: 'smooth'});
     }
 }
 
