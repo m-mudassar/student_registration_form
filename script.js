@@ -26,6 +26,7 @@ var indexToUpdate = -1;
 const save = document.querySelector(".save");
 const reset = document.querySelector(".reset");
 const update = document.querySelector(".update");
+const statusMessage = document.querySelector(".status")
 
 // Getting the latest values from the fields
 function getValues (){
@@ -41,6 +42,7 @@ function getValues (){
 function validateStudent(){
   getValues()
   if (firstName == ''){
+    goToTop();
     document.querySelector(".first-name").style.border = "1px solid red";
     return false;
   } else{
@@ -48,6 +50,7 @@ function validateStudent(){
   }
 
   if (lastName == ''){
+    goToTop();
     document.querySelector(".last-name").style.border = "1px solid red";
     return false;
   } else{
@@ -82,7 +85,7 @@ function generateStudentID() {
     isSpring = "04";
   }
 
-  // Conctenating Everithing to form a student id
+  // Conctenating Everything to form a student-id
   studentID =
     firstTwoLettersOfStudyProgram +
     lastTwoDigitsOfYear +
@@ -125,16 +128,22 @@ function saveData() {
       students.push(newStudent);
       rollNumber++;
       
+      // showing success message
+      showSuccessMessage("saved")
+      removeSuccessMessage();
+
+      // Resetting the student ID field
+      document.querySelector(".student-id").removeAttribute("value");
+      displayStudents();
+
+      // Scroll down to bottom to see new added recorded
+      goToBottom();
+
       // resetting the form to avoid data duplication
       reset.click(); 
   }
   
-  // Resetting the student ID field
-  document.querySelector(".student-id").removeAttribute("value");
-  displayStudents();
-
-  // Scroll down to bottom to see new added recorded
-  window.scrollTo({ left: 0, top: document.body.scrollHeight, behavior: "smooth" });
+ 
 }
 
 // Displaying the list of all students
@@ -168,7 +177,7 @@ function displayStudents() {
 function editData(i) {
 
   // Scroll to Top for editing
-  window.scrollTo({top: 0, behavior: 'smooth'});
+  goToTop();
   
   // Loading data into variables
   firstName = students[i].firstName;
@@ -225,13 +234,68 @@ function saveUpdatedData(){
       update.style.display = "none";
       reset.click();
 
+      // showing success message
+      // showing success message
+      showSuccessMessage("updated")
+      removeSuccessMessage();
+
       // Scroll to Top after updating
-       window.scrollTo({top: 0, behavior: 'smooth'});
+      goToTop();
     }
 }
 
 // Delete student at a particualr position e.g. i
 function deleteData(i) {
   students.splice(i, 1);
+
+  // showing success message
+  showSuccessMessage("deleted")
+  removeSuccessMessage();
+
+  // changing buttons
+  save.style.display = "inline";
+  update.style.display = "none";
+  reset.click();
+
   displayStudents();
+}
+
+function showSuccessMessage(state){
+  switch (state) {
+    case "saved":
+      statusMessage.innerHTML = "Student added successfully"
+      statusMessage.classList.add("green");
+      statusMessage.style.display = "inline";
+      break;
+  case "updated":
+      statusMessage.innerHTML = "Student updated successfully"
+      statusMessage.classList.add("green");
+      statusMessage.style.display = "inline";
+      break;
+  case "deleted":
+      statusMessage.innerHTML = "Student deleted successfully"
+      statusMessage.classList.remove("green");
+      statusMessage.classList.add("red");
+      statusMessage.style.display = "inline";
+      break;
+    default:
+      break;
+  }
+      
+}
+
+function removeSuccessMessage(){
+  setTimeout(function removeMessage(){
+    statusMessage.style.display = "none";
+  }, 1500);
+}
+
+function goToTop(){
+  // Scroll to Top
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+function goToBottom(){
+  // Scroll to Bottom
+  window.scrollTo({ left: 0, top: document.body.scrollHeight, behavior: "smooth" });
 }
