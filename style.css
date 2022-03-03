@@ -44,6 +44,9 @@ option{
     width: 49%;
 }
 
+.update{
+    display: none;
+}
 .content{
     border: 1px solid gray;
     padding: 10px;
