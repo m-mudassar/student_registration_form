@@ -11,24 +11,35 @@
     font-family: 'Roboto', sans-serif;
 }
 
-body{
+.red {
+    background-color: rgba(255, 0, 0, .6);
+}
+
+.green {
+    background-color: rgba(0, 255, 0, .6);
+}
+
+body {
     background-image: url(./images/bg.jpg);
     background-size: cover;
 }
 
-input, select, textarea, button{
+input,
+select,
+textarea,
+button {
     background: transparent;
 }
 
-option{
+option {
     color: black;
 }
 
-.form-heading{
+.form-heading {
     font-size: 20px;
 }
 
-.btn{
+.btn {
     font-family: 'Roboto', sans-serif;
     cursor: pointer;
     font-size: 17px;
@@ -44,10 +55,11 @@ option{
     width: 49%;
 }
 
-.update{
+.update {
     display: none;
 }
-.content{
+
+.content {
     border: 1px solid gray;
     padding: 10px;
     margin-top: 10px;
@@ -55,33 +67,35 @@ option{
     overflow: hidden;
 }
 
-.std-data{
+.std-data {
     width: 50%;
     float: left;
 }
 
-.buttons{
+.buttons {
     width: 50%;
     float: right;
-    text-align: right;    
+    text-align: right;
 }
 
-.edit-btn{
+.edit-btn {
     display: block;
     margin-left: auto;
     margin-right: 0;
 }
 
-.delete-btn{
+.delete-btn {
     display: block;
     margin-left: auto;
     margin-right: 0;
 }
 
-input[type=text], select, textarea {
+input[type=text],
+select,
+textarea {
     min-height: 50px;
     border: 1px solid #8385bf;
-    padding: 10px 15px; 
+    padding: 10px 15px;
     display: block;
     width: 98%;
     font-size: 1rem;
@@ -89,4 +103,16 @@ input[type=text], select, textarea {
     line-height: 1.5;
     margin-top: 10px;
     margin-bottom: 30px;
+}
+
+.status {
+    position: absolute;
+    position: fixed;
+    margin-top: 20px;
+    margin-right: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    top: 0;
+    right: 0;
+    display: none;
 }
