@@ -24,6 +24,7 @@ var tempStudentID = " ";
 var indexToUpdate = -1;
 const save = document.querySelector(".save");
 const reset = document.querySelector(".reset");
+const update = document.querySelector(".update");
 
 function getValues (){
   firstName = document.querySelector(".first-name").value;
@@ -93,7 +94,7 @@ function isExist(id){
 
 function saveData() {
   if(validateStudent()){
-    if (!isExist(tempStudentID)) {
+    // if (!isExist(tempStudentID)) {
       var newStudent = new Student(
         firstName,
         lastName,
@@ -107,12 +108,9 @@ function saveData() {
       rollNumber++;
       save.disabled = true
       reset.click();
-    } 
+    // } 
   
-    if(isExist(tempStudentID)){
-      updateStudent(indexToUpdate);
-      reset.click();
-    }
+    
   }
   
   document.querySelector(".student-id").removeAttribute("value");
@@ -163,6 +161,10 @@ function editData(i) {
   document.querySelector(".year").value = year;
   document.querySelector(".about").value = about;
   document.querySelector(".student-id").value = tempStudentID;
+
+  // changing buttons
+  save.style.display = "none";
+  update.style.display = "inline";
 }
 
 // updating the record of a student
@@ -182,6 +184,17 @@ function updateStudent(i) {
 
     // 3. Refreshing the students list for the updated list
     displayStudents();
+}
+
+function saveUpdatedData(){
+  if(isExist(tempStudentID)){
+      updateStudent(indexToUpdate);
+
+      // changing buttons
+      save.style.display = "inline";
+      update.style.display = "none";
+      reset.click();
+    }
 }
 
 // Delete students
