@@ -11,6 +11,7 @@ class Student {
   }
 }
 
+// Global variables
 var students = [];
 var firstName = " ";
 var lastName = " ";
@@ -26,6 +27,7 @@ const save = document.querySelector(".save");
 const reset = document.querySelector(".reset");
 const update = document.querySelector(".update");
 
+// Getting the latest values from the fields
 function getValues (){
   firstName = document.querySelector(".first-name").value;
   lastName = document.querySelector(".last-name").value;
@@ -35,6 +37,7 @@ function getValues (){
   about = document.querySelector(".about").value;
 }
 
+// Validates the firstName and lastName
 function validateStudent(){
   getValues()
   if (firstName == ''){
@@ -53,6 +56,10 @@ function validateStudent(){
   return true;
 }
 
+// Updates values in the form fields
+// and get get latest values 
+// when user types in
+// and generate updated sutdent id
 function updateValue() {
    validateStudent();
    getValues();
@@ -60,27 +67,34 @@ function updateValue() {
    save.disabled = false;
 }
 
+// Generate a new and unique student id
 function generateStudentID() {
+
   var firstTwoLettersOfStudyProgram = studyProgram.substring(0, 2);
   var lastTwoDigitsOfYear = year.substring(year.length - 2);
 
   var isSpring = "02";
   if (year.includes("spring")) {
+    // semester is spring
     isSpring = "02";
   } else {
     // semester is fall
     isSpring = "04";
   }
 
+  // Conctenating Everithing to form a student id
   studentID =
     firstTwoLettersOfStudyProgram +
     lastTwoDigitsOfYear +
     isSpring +
     rollNumber.toString().padStart(5, "0");
+
+  // Update the field with the generated student id
   document.querySelector(".student-id").setAttribute("value", studentID);
 }
 
-// Returns true if the student already exists
+// Returns true if the 
+// student already exists in array
 function isExist(id){
   for(var i=0; i<students.length; i++){
       if(students[i].studentID == id){
@@ -92,9 +106,11 @@ function isExist(id){
   return false
 }
 
+// save data for a new student
 function saveData() {
+  // validating if all fields are filds
   if(validateStudent()){
-    // if (!isExist(tempStudentID)) {
+      // creating a new student object
       var newStudent = new Student(
         firstName,
         lastName,
@@ -104,22 +120,25 @@ function saveData() {
         about
       );
       newStudent.studentID = studentID;
+
+      // add the student object to an array
       students.push(newStudent);
       rollNumber++;
-      save.disabled = true
-      reset.click();
-    // } 
-  
-    
+      
+      // resetting the form to avoid data duplication
+      reset.click(); 
   }
   
   document.querySelector(".student-id").removeAttribute("value");
   displayStudents();
 }
 
-// Template for displaying the data for students
+// Displaying the list of all students
 function displayStudents() {
   document.querySelector(".data").innerHTML = " ";
+
+  // looping through the students array 
+  // and displaying the list of students
   for (let i = 0; i < students.length; i++) {
     document.querySelector(".data").innerHTML +=
    ' <div class="content"> ' +
@@ -186,8 +205,12 @@ function updateStudent(i) {
     displayStudents();
 }
 
+// If student will will exsist we will update student
+// and save the updated data
 function saveUpdatedData(){
   if(isExist(tempStudentID)){
+    
+      // updating students at given position
       updateStudent(indexToUpdate);
 
       // changing buttons
@@ -197,7 +220,7 @@ function saveUpdatedData(){
     }
 }
 
-// Delete students
+// Delete student at a particualr position e.g. i
 function deleteData(i) {
   students.splice(i, 1);
   displayStudents();
